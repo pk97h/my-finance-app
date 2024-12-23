@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: rgb(46, 196, 182)
+    background-color: rgb(46, 196, 182);
   }
 `;
 
