@@ -14,6 +14,7 @@ const Detail = () => {
   const handleBack = () => {
     navigate("/");
   };
+
   return (
     <DetailContainer>
       <ExpenseForm>
@@ -38,7 +39,9 @@ const Detail = () => {
       <ButtonContainer>
         <ExpenseFormEditButton type="submit">수정</ExpenseFormEditButton>
         <ExpenseFormDeleteButton type="submit">삭제</ExpenseFormDeleteButton>
-        <ExpenseFormBackButton onClick={handleBack}>뒤로 가기</ExpenseFormBackButton>
+        <ExpenseFormBackButton onClick={handleBack}>
+          뒤로 가기
+        </ExpenseFormBackButton>
       </ButtonContainer>
     </DetailContainer>
   );
