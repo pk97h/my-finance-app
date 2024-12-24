@@ -4,40 +4,58 @@ import {
   ExpenseDateTitle,
   ExpenseListContainer,
 } from "../styles/HomeStyles";
+import supabase from "../utils/supabase";
+import { useEffect, useState } from "react";
 
-const ExpenseList = () => {
-  const navigate = useNavigate()
+const ExpenseList = ({ selectedMonth }) => {
+  const navigate = useNavigate();
 
-  const handleDetail = () => {
-    navigate("/expenses/2");
+  const [formStates, setFormStates] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await supabase.from("expenses").select();
+        if (error) {
+          console.log('error => ', error)
+          return;
+        }
+        setFormStates(data);
+      } catch (error) {
+        console.log('error => ', error)
+      }
+    };
+    fetchData();
+  }, []);
+
+  const filteredExpenses = selectedMonth
+  ? formStates.filter((expense) => {
+      const expenseMonth = new Date(expense.date).getMonth() + 1;
+      return expenseMonth === selectedMonth;
+    })
+  : formStates;
+
+  const handleDetail = (id) => {
+    navigate(`/expenses/${id}`);
   };
 
   return (
     <ExpenseListContainer>
-      <Expense onClick={handleDetail}>
-        <ExpenseDateTitle>
-          <p>2024-01-01</p>
-          <p>햄버거</p>
-          <p>내용</p>
-        </ExpenseDateTitle>
-        <p>2000원</p>
-      </Expense>
-      <Expense>
-        <ExpenseDateTitle>
-          <p>2024-01-01</p>
-          <p>햄버거</p>
-          <p>내용</p>
-        </ExpenseDateTitle>
-        <p>2000원</p>
-      </Expense>
-      <Expense>
-        <ExpenseDateTitle>
-          <p>2024-01-01</p>
-          <p>햄버거</p>
-          <p>내용</p>
-        </ExpenseDateTitle>
-        <p>2000원</p>
-      </Expense>
+      {filteredExpenses.map((expense) => (
+        <Expense
+          key={expense.id}
+          onClick={() => {
+            handleDetail(expense.id);
+          }}
+        >
+          <ExpenseDateTitle>
+            <p>{expense.date}</p>
+            <p>{expense.item}</p>
+            <p>{expense.description}</p>
+          </ExpenseDateTitle>
+          <p>{expense.amount}원</p>
+        </Expense>
+      ))}
     </ExpenseListContainer>
   );
 };

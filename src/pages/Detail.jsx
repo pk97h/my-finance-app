@@ -23,18 +23,18 @@ const Detail = () => {
       </ExpenseForm>
 
       <ExpenseForm>
-        <label htmlFor="title">항목</label>
-        <ExpenseFormInput type="text" id="title" placeholder="지출 항목" />
+        <label htmlFor="item">항목</label>
+        <ExpenseFormInput type="text" id="item" placeholder="지출 항목" />
       </ExpenseForm>
 
       <ExpenseForm>
-        <label htmlFor="price">금액</label>
-        <ExpenseFormInput type="number" id="price" placeholder="지출 금액" />
+        <label htmlFor="amount">금액</label>
+        <ExpenseFormInput type="number" id="amount" placeholder="지출 금액" />
       </ExpenseForm>
 
       <ExpenseForm>
-        <label htmlFor="content">내용</label>
-        <ExpenseFormInput type="text" id="content" placeholder="지출 내용" />
+        <label htmlFor="description">내용</label>
+        <ExpenseFormInput type="text" id="description" placeholder="지출 내용" />
       </ExpenseForm>
       <ButtonContainer>
         <ExpenseFormEditButton type="submit">수정</ExpenseFormEditButton>

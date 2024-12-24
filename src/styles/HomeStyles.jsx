@@ -16,10 +16,12 @@ export const MonthButton = styled.button`
   gap: 10px;
   border: none;
   border-radius: 8px;
-  background-color: rgb(246, 247, 250);
+  background-color: ${({ isSelected }) =>
+    isSelected ? "rgb(46, 196, 182)" : "rgb(246, 247, 250)"};
   cursor: pointer;
   width: 15%;
   margin: auto;
+  color: ${({ isSelected }) => (isSelected ? "#fff" : "#000")};
 
   &:hover {
     background-color: rgb(46, 196, 182);
@@ -42,7 +44,8 @@ export const ExpenseForm = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  flex: 1 1 0%;
+  width: 20%;
+  margin: auto;
 `;
 
 export const ExpenseFormInput = styled.input`
@@ -81,7 +84,7 @@ export const Expense = styled.button`
   justify-content: space-between;
   padding: 15px 20px;
   background-color: rgb(249, 249, 249);
-  border:none;
+  border: none;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
   cursor: pointer;
@@ -90,7 +93,7 @@ export const Expense = styled.button`
 `;
 
 export const ExpenseDateTitle = styled.div`
-  display:flex;
-  align-items:start;
-  flex-direction: column;  
-`
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+`;
