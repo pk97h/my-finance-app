@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   CreateExpenseContainer,
   ExpenseForm,
@@ -6,25 +5,23 @@ import {
   ExpenseFormInput,
 } from "../styles/HomeStyles";
 
-const CreateExpense = () => {
-  const [newExpense, setNewExpense] = useState({
-    date: "",
-    item: "",
-    amount: "",
-    description: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewExpense((prev) => ({ ...prev, [name]: value }));
-  };
-
-
+const CreateExpense = ({
+  newExpense,
+  handleInputChange,
+  handleSubmitExpenses,
+}) => {
   return (
-    <CreateExpenseContainer>
+    <CreateExpenseContainer onSubmit={handleSubmitExpenses}>
       <ExpenseForm>
         <label htmlFor="date">날짜</label>
-        <ExpenseFormInput type="date" id="date" name="date" value={newExpense.date} onChange={handleInputChange}/>
+        <ExpenseFormInput
+          type="text"
+          id="date"
+          name="date"
+          placeholder="YYYY-MM-DD"
+          value={newExpense.date}
+          onChange={handleInputChange}
+        />
       </ExpenseForm>
 
       <ExpenseForm>
@@ -63,7 +60,7 @@ const CreateExpense = () => {
         />
       </ExpenseForm>
 
-      <ExpenseFormButton>저장</ExpenseFormButton>
+      <ExpenseFormButton type="submit">저장</ExpenseFormButton>
     </CreateExpenseContainer>
   );
 };

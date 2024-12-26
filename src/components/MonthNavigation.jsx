@@ -1,14 +1,18 @@
 import { MonthButtonContainer, MonthButton } from "../styles/HomeStyles";
 
-function MonthNavigation({ selectedMonth, setSelectedMonth }) {
+const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+const MonthNavigation = ({ selectedMonth, setSelectedMonth }) => {
   return (
     <MonthButtonContainer>
-      {[...Array(12)].map((_, index) => {
-        const month = index + 1;
-        const isSelected = month === selectedMonth;
+      {MONTHS.map((element) => {
         return (
-          <MonthButton key={index} onClick={() => setSelectedMonth(month) } isSelected={isSelected}>
-            {index + 1}월
+          <MonthButton
+            key={element}
+            selected={selectedMonth === element}
+            onClick={() => setSelectedMonth(element)}
+          >
+            {`${element}월`}
           </MonthButton>
         );
       })}

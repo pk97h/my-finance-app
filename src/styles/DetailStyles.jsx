@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const DetailContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   gap: 10px;
   padding: 20px;
@@ -25,6 +24,7 @@ export const ExpenseFormEditButton = styled.button`
   border-radius: 8px;
   padding: 8px;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 export const ExpenseFormDeleteButton = styled.button`
@@ -34,6 +34,7 @@ export const ExpenseFormDeleteButton = styled.button`
   border-radius: 8px;
   padding: 8px;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 export const ExpenseFormBackButton = styled.button`
@@ -43,4 +44,12 @@ export const ExpenseFormBackButton = styled.button`
   border-radius: 8px;
   padding: 8px;
   cursor: pointer;
+  text-decoration: none;
+`;
+
+export const ExpenseFormDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
 `;
