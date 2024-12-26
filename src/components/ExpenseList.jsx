@@ -1,43 +1,24 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Expense,
   ExpenseDateTitle,
   ExpenseListContainer,
 } from "../styles/HomeStyles";
 
-const ExpenseList = () => {
-  const navigate = useNavigate()
-
-  const handleDetail = () => {
-    navigate("/expenses/2");
-  };
-
+const ExpenseList = ({ filteredMonth }) => {
   return (
     <ExpenseListContainer>
-      <Expense onClick={handleDetail}>
-        <ExpenseDateTitle>
-          <p>2024-01-01</p>
-          <p>햄버거</p>
-          <p>내용</p>
-        </ExpenseDateTitle>
-        <p>2000원</p>
-      </Expense>
-      <Expense>
-        <ExpenseDateTitle>
-          <p>2024-01-01</p>
-          <p>햄버거</p>
-          <p>내용</p>
-        </ExpenseDateTitle>
-        <p>2000원</p>
-      </Expense>
-      <Expense>
-        <ExpenseDateTitle>
-          <p>2024-01-01</p>
-          <p>햄버거</p>
-          <p>내용</p>
-        </ExpenseDateTitle>
-        <p>2000원</p>
-      </Expense>
+      {filteredMonth.map((expense) => (
+        <Expense key={expense.id} as={Link} to={`/expenses/${expense.id}`}>
+          <ExpenseDateTitle>
+            <p className="expenseDate">{expense.date}</p>
+            <p>
+              {expense.item} - {expense.description}
+            </p>
+          </ExpenseDateTitle>
+          <p>{expense.amount}원</p>
+        </Expense>
+      ))}
     </ExpenseListContainer>
   );
 };
