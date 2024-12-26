@@ -67,9 +67,8 @@ const Home = () => {
       return;
     }
 
-    await supabase.from("expenses").insert(newExpense).select("*");
-
-    setExpenses([...expenses, newExpense]);
+const { data } = await supabase.from("expenses").insert(newExpense).select("*");
+    setExpenses([...expenses, ...data]);
 
     setNewExpense({
       date: "",
