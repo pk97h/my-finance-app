@@ -14,8 +14,7 @@ const Home = () => {
     description: "",
   });
 
-  // 데이터 가져오기
-
+  // supabase 데이터 가져오기
   useEffect(() => {
     const fetchExpenses = async () => {
       const { data } = await supabase.from("expenses").select("*");
@@ -25,26 +24,22 @@ const Home = () => {
   }, []);
 
   // 필터
-
   const filteredMonth = expenses.filter((expense) => {
     const month = new Date(expense.date).getMonth() + 1;
     return month === selectedMonth;
   });
 
   // 입력값 업데이트
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewExpense({ ...newExpense, [name]: value });
   };
 
-  // 데이터 추가
-
+  // supabase 데이터 추가 핸들러
   const handleSubmitExpenses = async (e) => {
     e.preventDefault();
 
     // 유효성검사
-
     if (!newExpense.date) {
       alert("날짜를 입력해주세요.");
       return;
@@ -67,7 +62,11 @@ const Home = () => {
       return;
     }
 
-const { data } = await supabase.from("expenses").insert(newExpense).select("*");
+    // supabase 데이터 추가
+    const { data } = await supabase
+      .from("expenses")
+      .insert(newExpense)
+      .select("*");
     setExpenses([...expenses, ...data]);
 
     setNewExpense({
