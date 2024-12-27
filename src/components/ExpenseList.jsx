@@ -4,8 +4,12 @@ import {
   ExpenseDateTitle,
   ExpenseListContainer,
 } from "../styles/HomeStyles";
+import { useContext } from "react";
+import { ExpenseContext } from "../utils/ExpenseContext";
 
-const ExpenseList = ({ filteredMonth }) => {
+const ExpenseList = () => {
+  const { filteredMonth } = useContext(ExpenseContext);
+
   return (
     <ExpenseListContainer>
       {filteredMonth.map((expense) => (

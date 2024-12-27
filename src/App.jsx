@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./router/Router";
+import ExpenseProvider from "./utils/expenseProvider";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -13,8 +14,10 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
-    <GlobalStyle />
-      <Router />
+      <GlobalStyle />
+      <ExpenseProvider>
+        <Router />
+      </ExpenseProvider>
     </>
   );
 }
