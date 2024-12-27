@@ -11,7 +11,7 @@ export const DetailContainer = styled.div`
   margin: 40px auto;
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.form`
   display: flex;
   flex-direction: row;
   gap: 10px;
