@@ -149,7 +149,7 @@ const Detail = () => {
         >
           삭제
         </ExpenseFormDeleteButton>
-        <ExpenseFormBackButton as={Link} to={"/"}>
+        <ExpenseFormBackButton as={Link} to={-1}>
           뒤로 가기
         </ExpenseFormBackButton>
       </ButtonContainer>
